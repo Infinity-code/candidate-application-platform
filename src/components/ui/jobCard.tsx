@@ -1,5 +1,6 @@
-import { Grid, Card, CardContent, Box, Typography, Button, Link } from "@mui/material";
+import { Grid, Card, CardContent, Box, Typography, Button, Link, Modal } from "@mui/material";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { DialogBox } from "../CardComponents/Dialog";
 
 
 export type job={
@@ -18,8 +19,8 @@ export function JobCard({companyTitle,jobTitle,location,jobDescription,minExp,jo
     
     return (
           
-          <Grid item xs={12} md={6} lg={4} sx={{display:'flex',alignItems:'center', justifyContent:'center', width:'100%'}} >
-            <Card sx={{
+          <Grid item xs={12} md={6} lg={4} sx={{display:'flex',alignItems:'center', width:'100%'}} >
+            <Card className="jobCard-body" sx={{
               width:'60%',
               borderRadius:'20px',
               minWidth:"340px",
@@ -55,38 +56,39 @@ export function JobCard({companyTitle,jobTitle,location,jobDescription,minExp,jo
                     Estimated Salary: {`${minSalary} - ${maxSalary} ${jobCurrency}`}
                 </Box>
                 
-                <Box sx={{textAlign:'left', marginBottom:'8px'}}>
+                <Box sx={{textAlign:'left',}}>
                 
-                    <Typography variant="body1" fontWeight={500} marginTop={'20px'} >
+                    <Typography variant="body1" fontWeight={500} marginTop={'20px'} fontSize={'14px'} fontFamily={'Lexend'}>
                         About Company:
                     </Typography>
-                    
+            
                     <p style={{maskImage:'linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255), rgba(255, 255, 255, 0))',marginTop:'5px', fontWeight:'400', whiteSpace:'pre-wrap', height:'250px'}}>
                     {jobDescription}
                     </p>
                     
                 </Box>
-
-                <div className="title-container">
+                <DialogBox jobDescription={jobDescription}/>
+                
+                <div className="experience-container" style={{position:'relative', top:'-20px'}}>
                     <h3>Minimum Experience</h3>
                     <h2>{minExp} years</h2>
                 </div>
               </CardContent>
+
               
-              <Box sx={{display:'flex',flexDirection: 'column',justifyContent:'flex-end',alignItems:'flex-start', width:'90%',marginTop:'20px',padding:'0 15px'}}>
-                <Button variant='text' sx={{backgroundColor: 'rgb(85, 239, 196)',color: 'rgb(0, 0, 0)',fontWeight: 500,padding: '8px 18px',width:'100%',textTransform:"none",fontSize:'16px'}} >
+              <Box sx={{display:'flex',flexDirection: 'column',justifyContent:'flex-end',alignItems:'flex-start', width:'90%',padding:'0 15px'}}>
+                <Button id="apply-btn" variant='text' >
                 <span>⚡ Easy Apply</span>
                 </Button>
               </Box>
-              <Box sx={{display:'flex',flexDirection: 'column',justifyContent:'flex-end',alignItems:'flex-start', width:'90%',marginTop:'20px',padding:'0 15px'}}>
-                <Button variant='text' sx={{backgroundColor: 'rgb(73, 67, 218)',color: '#fff',fontWeight: 500,padding: '8px 18px',width:'100%',textTransform:"none",fontSize:'16px',gap:'4px'}} >
+              <Box sx={{display:'flex',flexDirection: 'column',alignItems:'center', width:'90%',marginTop:'10px',padding:'0 15px'}}>
+                <Button id="referral-btn" variant='text' >
                 <AccountCircleIcon/>
                 <Box >Ask for a referral</Box>
                 
                 </Button>
               </Box>
-              <Box>
-              </Box>
+              
             </Card>
           </Grid>
       
