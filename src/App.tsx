@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { Box, Grid } from '@mui/material';
 import { JobCard } from './components/ui/jobCard';
+import { Filter } from './components/SearchBar/filter';
+
 
 function App() {
   const [jobs,setJobs]=useState<any>([]);
@@ -86,14 +86,18 @@ function App() {
   
   return (
     <>
-    <Box width={'100%'} sx={{display:'flex',alignItems:'center', justifyContent:'center'}}  >
-      <Grid container flexWrap={'wrap'} rowSpacing={'3%'} columnSpacing={'4%'} sx={{display:'flex',alignItems:'center', justifyContent:'center', width:'100%',m:'0px'}}>
-          {jobs.map((jobData:job)=>{
-            return <JobCard key={jobData.jdUid} jobDescription={jobData.jobDetailsFromCompany} companyTitle={jobData.companyName} minExp={jobData.minExp} location={jobData.location} jobLink={jobData.jdLink} jobTitle={jobData.jobRole} jobCurrency={jobData.salaryCurrencyCode} minSalary={jobData.minJdSalary} maxSalary={jobData.maxJdSalary} />
-          })}
-          
-      </Grid>
-    </Box>
+    <div style={{width:'100%', display:'flex',alignItems:'center',flexGrow:0, justifyContent:'center'}}>
+      <Box width={'80%'} sx={{display:'flex',flexDirection:'column',alignItems:'center',flexGrow:0, justifyContent:'center', marginTop:'50px'}}  >
+        <Filter/>
+        <Grid container flexWrap={'wrap'} rowSpacing={'3%'} sx={{display:'flex',alignItems:'center', justifyContent:'center', width:'100%',m:'0px', flexGrow:'wrap', boxSizing:'border-box'}}>
+            {jobs.map((jobData:job)=>{
+              return <JobCard key={jobData.jdUid} jobDescription={jobData.jobDetailsFromCompany} companyTitle={jobData.companyName} minExp={jobData.minExp} location={jobData.location} jobLink={jobData.jdLink} jobTitle={jobData.jobRole} jobCurrency={jobData.salaryCurrencyCode} minSalary={jobData.minJdSalary} maxSalary={jobData.maxJdSalary} />
+            })}
+            
+        </Grid>
+      </Box>
+    </div>
+    
     <div className='loadIndicator' ref={loadRef}></div>
     </>
   )

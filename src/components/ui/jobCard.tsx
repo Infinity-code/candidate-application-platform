@@ -23,7 +23,7 @@ export function JobCard({companyTitle,jobTitle,location,jobDescription,minExp,jo
             <Card className="jobCard-body" sx={{
               width:'60%',
               borderRadius:'20px',
-              minWidth:"340px",
+              minWidth:"300px",
               maxWidth:"340px",
               p:'4%',
               display:'flex',
