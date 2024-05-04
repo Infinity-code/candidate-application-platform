@@ -1,4 +1,4 @@
-import { Grid, Card, CardContent, Box, Typography, Button, Link, Modal } from "@mui/material";
+import { Grid, Card, CardContent, Box, Typography, Button, Link} from "@mui/material";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { DialogBox } from "../CardComponents/Dialog";
 
@@ -13,9 +13,10 @@ export type job={
   jobCurrency:string,
   minSalary:number,
   maxSalary:number,
+  logo:string
 }
 
-export function JobCard({companyTitle,jobTitle,location,jobDescription,minExp,jobLink,jobCurrency,minSalary,maxSalary}:job){
+export function JobCard({companyTitle,jobTitle,location,jobDescription,minExp,jobLink,jobCurrency,minSalary,maxSalary,logo}:job){
     
     return (
           
@@ -34,9 +35,9 @@ export function JobCard({companyTitle,jobTitle,location,jobDescription,minExp,jo
 
               <CardContent sx={{padding:'2%'}}>
                 
-                <Box sx={{display:'flex', flexDirection:'row',gap:'5px',marginBottom:'8px'}}>
-                    <Box sx={{display:'flex',justifyContent:'center', alignItems:'center'}}>
-                        <img alt="Logo"/>
+                <Box sx={{display:'flex', flexDirection:'row',gap:'5px',marginBottom:'8px',}}>
+                    <Box sx={{display:'flex'}}>
+                        <img src={logo} alt="Logo" style={{width:'30px',height:'70%'}}/>
                     </Box>
                     <div className="main-title-container">
                         <div className="title-container">
