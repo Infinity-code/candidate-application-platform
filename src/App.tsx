@@ -10,6 +10,35 @@ function App() {
   const [offset,setoffset]=useState<number>(0);
   const loadRef=useRef(null);
 
+  type job={
+    jdUid:string,
+    companyName:string,
+    jobRole:string,
+    location:string,
+    jobDetailsFromCompany:string,
+    minExp:number,
+    jdLink:string,
+    salaryCurrencyCode:string,
+    minJdSalary:number,
+    maxJdSalary:number,
+    logoUrl:string
+  }
+
+  const jj={
+    jdUid:"string",
+    companyName:"string",
+    jobRole:"string",
+    location:"string",
+    jobDetailsFromCompany:"string",
+    minExp:0,
+    jdLink:"string",
+    salaryCurrencyCode:"string",
+    minJdSalary:0,
+    maxJdSalary:0,
+    logoUrl:"string",
+    dummy:null
+  }
+
   
   function fetchJobs(){
     const header=new Headers();
@@ -25,12 +54,21 @@ function App() {
       headers:header,
       body
     }
+    
 
     fetch("https://api.weekday.technology/adhoc/getSampleJdJSON",request)
     .then((res)=>res.json())
     .then((job)=>{
       
-      setJobs([...jobs,...job.jdList]);
+      const checkjobs:(typeof jj)[]=job.jdList;
+      const jobslist:any[]=[];
+
+      checkjobs.map((j)=>{
+        if(!(Object.values(j).includes(null))){
+          jobslist.push(j);
+        }
+      })
+      setJobs([...jobs,...jobslist]);
       setoffset(offset+9);
     })
     .catch((err)=>console.log(err));
@@ -70,18 +108,6 @@ function App() {
     }
   },[offset,jobs]);
 
-  type job={
-    jdUid:string,
-    companyName:string,
-    jobRole:string,
-    location:string,
-    jobDetailsFromCompany:string,
-    minExp:number,
-    jdLink:string,
-    salaryCurrencyCode:string,
-    minJdSalary:number,
-    maxJdSalary:number,
-  }
   
   
   return (
@@ -89,9 +115,9 @@ function App() {
     <div style={{width:'100%', display:'flex',alignItems:'center',flexGrow:0, justifyContent:'center'}}>
       <Box width={'80%'} sx={{display:'flex',flexDirection:'column',alignItems:'center',flexGrow:0, justifyContent:'center', marginTop:'50px'}}  >
         <Filter/>
-        <Grid container flexWrap={'wrap'} rowSpacing={'3%'} sx={{display:'flex',alignItems:'center', justifyContent:'center', width:'100%',m:'0px', flexGrow:'wrap', boxSizing:'border-box'}}>
+        <Grid container flexWrap={'wrap'} rowSpacing={'3%'} sx={{display:'flex',alignItems:'center', justifyContent:'start', width:'100%',m:'0px', flexGrow:'wrap', boxSizing:'border-box'}}>
             {jobs.map((jobData:job)=>{
-              return <JobCard key={jobData.jdUid} jobDescription={jobData.jobDetailsFromCompany} companyTitle={jobData.companyName} minExp={jobData.minExp} location={jobData.location} jobLink={jobData.jdLink} jobTitle={jobData.jobRole} jobCurrency={jobData.salaryCurrencyCode} minSalary={jobData.minJdSalary} maxSalary={jobData.maxJdSalary} />
+              return <JobCard key={jobData.jdUid} jobDescription={jobData.jobDetailsFromCompany} companyTitle={jobData.companyName} minExp={jobData.minExp} location={jobData.location} jobLink={jobData.jdLink} jobTitle={jobData.jobRole} jobCurrency={jobData.salaryCurrencyCode} minSalary={jobData.minJdSalary} maxSalary={jobData.maxJdSalary} logo={jobData.logoUrl}/>
             })}
             
         </Grid>
