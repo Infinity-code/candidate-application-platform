@@ -5,7 +5,6 @@ import { JobCard } from './components/ui/jobCard';
 import { Filter } from './components/SearchBar/filter';
 
 import { useJobDispatch,useJobSelector } from './store/hooks';
-import { newJob } from './Job-slices/jobSlice';
 
 function App() {
   const [jobs,setJobs]=useState<any>([]);
