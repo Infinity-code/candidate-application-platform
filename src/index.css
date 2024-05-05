@@ -1,7 +1,6 @@
 
 p{
   font-size: 14px;
-  /* font-weight: 400; */
 }
 .jobCard-body:hover{
   transition-behavior: normal;
@@ -21,7 +20,7 @@ p{
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 1px;
-  margin-bottom: 0px;
+  margin: 0px;
   color: #8b8b8b;
   padding: 0;
 }
@@ -51,7 +50,9 @@ p{
   align-items:flex-start;
 }
 
-
+#show-more-link:hover{
+  cursor: pointer;
+}
 
 #referral-btn{
   background-color: rgb(73, 67, 218);
@@ -80,4 +81,9 @@ p{
 
 #apply-btn:hover{
   background-color: rgb(85, 239, 196);
+}
+
+
+.selection-bar>.MuiInput-input:active{
+  color: pink;
 }

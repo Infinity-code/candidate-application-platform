@@ -4,13 +4,18 @@ import { Box, Grid } from '@mui/material';
 import { JobCard } from './components/ui/jobCard';
 import { Filter } from './components/SearchBar/filter';
 
+import { useJobDispatch,useJobSelector } from './store/hooks';
+import { newJob } from './Job-slices/jobSlice';
 
 function App() {
   const [jobs,setJobs]=useState<any>([]);
   const [offset,setoffset]=useState<number>(0);
   const loadRef=useRef(null);
 
-  type job={
+  const job=useJobSelector((state)=>state.jobsy.job);
+  const dispatch=useJobDispatch();
+  console.log("job:",job,"jobs:",jobs);
+  interface job{
     jdUid:string,
     companyName:string,
     jobRole:string,
@@ -24,20 +29,7 @@ function App() {
     logoUrl:string
   }
 
-  const jj={
-    jdUid:"string",
-    companyName:"string",
-    jobRole:"string",
-    location:"string",
-    jobDetailsFromCompany:"string",
-    minExp:0,
-    jdLink:"string",
-    salaryCurrencyCode:"string",
-    minJdSalary:0,
-    maxJdSalary:0,
-    logoUrl:"string",
-    dummy:null
-  }
+ 
 
   
   function fetchJobs(){
@@ -60,8 +52,8 @@ function App() {
     .then((res)=>res.json())
     .then((job)=>{
       
-      const checkjobs:(typeof jj)[]=job.jdList;
-      const jobslist:any[]=[];
+      const checkjobs:job[]=job.jdList;
+      const jobslist:job[]=[];
 
       checkjobs.map((j)=>{
         if(!(Object.values(j).includes(null))){
@@ -69,6 +61,10 @@ function App() {
         }
       })
       setJobs([...jobs,...jobslist]);
+      
+      
+      
+      
       setoffset(offset+9);
     })
     .catch((err)=>console.log(err));
@@ -106,7 +102,7 @@ function App() {
         observer.unobserve(loadRef.current);
       }
     }
-  },[offset,jobs]);
+  },[dispatch,offset,jobs]);
 
   
   
