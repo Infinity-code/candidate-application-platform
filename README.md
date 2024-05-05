@@ -8,3 +8,12 @@ A simple web application for searching jobs.
 
 ### Not implemented
 -[] filter options are not responsive(as I could not use Redux for state management, faced some problems with value mutations)
+
+### Installation:
+````
+npm install
+````
+### How to run:
+````
+npm run dev
+````
