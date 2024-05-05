@@ -1,0 +1,89 @@
+
+p{
+  font-size: 14px;
+}
+.jobCard-body:hover{
+  transition-behavior: normal;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0ms;
+  transition-property: all;
+  transform: scale(1.01);
+}
+
+.title-container{
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+}
+.title-container>h3,.experience-container>h3{
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 0px;
+  color: #8b8b8b;
+  padding: 0;
+}
+
+.main-title-container>p{
+  margin:0;
+  font-size:11px;
+  font-weight:500;
+  margin-top:5px;
+  text-align: left;
+}
+
+.title-container>h2,.experience-container>h2{
+  font-size: 14px;
+  font-weight:400;
+  line-height: 1.5;
+  margin: 0px;
+  letter-spacing: 1px;
+}
+.title-container>h3:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+.title-container{
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+}
+
+#show-more-link:hover{
+  cursor: pointer;
+}
+
+#referral-btn{
+  background-color: rgb(73, 67, 218);
+  color: #fff;
+  font-weight: 500;
+  padding: 8px 18px;
+  width:100%;
+  font-size:16px;
+  text-transform: none;
+  gap:4px;
+}
+
+#referral-btn:hover{
+  background-color: rgb(73, 67, 218);
+}
+#apply-btn{
+  background-color: rgb(85, 239, 196);
+  color: black;
+  font-weight: 500;
+  padding: 8px 18px;
+  width:100%;
+  font-size:16px;
+  text-transform: none;
+  gap:4px;
+}
+
+#apply-btn:hover{
+  background-color: rgb(85, 239, 196);
+}
+
+
+.selection-bar>.MuiInput-input:active{
+  color: pink;
+}
